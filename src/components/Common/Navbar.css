@@ -1,0 +1,154 @@
+/* 공통 Body 스타일 */
+body {
+    background-color: #f4f5f7; /* 은은한 연회색 배경 */
+    font-family: 'Inter', Arial, sans-serif; /* 깔끔하고 가독성 높은 폰트 */
+    margin: 0;
+    padding: 0;
+    line-height: 1.6; /* 텍스트 간격 조정 */
+    color: #2e3a59; /* 기본 텍스트 색상 */
+    overflow-x: hidden; /* 가로 스크롤 방지 */
+}
+
+/* 네비게이션 바 스타일 */
+nav {
+    background-color: #ffffff; /* 순백색 배경 */
+    padding: 15px 20px;
+    border-bottom: 1px solid #e0e6ed; /* 하단 경계선 */
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1); /* 살짝 떠 있는 효과 */
+}
+
+nav ul {
+    list-style: none; /* 기본 리스트 스타일 제거 */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: flex-start; /* 좌측 정렬 */
+    gap: 20px; /* 항목 간격 설정 */
+    align-items: center;
+}
+
+nav li {
+    margin: 0; /* 불필요한 여백 제거 */
+}
+
+/* 기본 링크 스타일 */
+nav a {
+    text-decoration: none;
+    color: #2e3a59; /* 진한 회색 텍스트 */
+    padding: 10px 15px;
+    border-radius: 6px;
+    font-size: 15px;
+    font-weight : 500; /* 살짝 굵은 텍스트 */
+    transition: all 0.3s ease-in-out;
+}
+
+/* 선택된 네비게이션 항목 스타일 */
+nav li.selected a {
+    background-color: #e9effb; /* 선택된 항목 배경색 */
+    color: #1d4ed8; /* 선택된 항목 텍스트 색상 */
+    
+}
+
+/* 호버 효과 */
+nav a:hover {
+    background-color: #f0f7ff; /* 호버 시 더 밝은 배경 */
+    color: #1d4ed8; /* 파란색 텍스트 강조 */
+    transform: scale(1.05); /* 버튼 크기 확대 */
+}
+
+/* 버튼 스타일 */
+button {
+    background-color: #1d4ed8; /* 기본 파란색 */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+/* 카드 스타일 */
+.card {
+    background-color: #ffffff;
+    border: 1px solid #e0e6ed;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.card:hover {
+    transform: translateY(-5px); /* 살짝 떠 있는 효과 */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.card-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #2e3a59;
+}
+
+.card-text {
+    font-size: 14px;
+    color: #6b7280; /* 중간 회색 */
+    margin-bottom: 15px;
+}
+
+.card-actions {
+    display: flex;
+    justify-content: flex-end;
+}
+
+/* 입력 필드 스타일 */
+input, select, textarea {
+    width: 100%;
+    padding: 10px 15px;
+    margin: 10px 0;
+    border: 1px solid #e0e6ed;
+    border-radius: 6px;
+    font-size: 14px;
+    background-color: #f9fafb; /* 연회색 배경 */
+    transition: border-color 0.3s ease-in-out;
+}
+
+input:focus, select:focus, textarea:focus {
+    border-color: #1d4ed8; /* 파란색 포커스 */
+    outline: none;
+    background-color: white;
+}
+
+/* 테이블 스타일 */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #ffffff;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+th, td {
+    text-align: left;
+    padding: 15px;
+    border-bottom: 1px solid #e0e6ed;
+}
+
+th {
+    background-color: #f4f5f7;
+    font-weight: 600;
+    color: #2e3a59;
+}
+
+td {
+    color: #6b7280;
+}
+
+tr:hover {
+    background-color: #f9fafb; /* 행 호버 색상 */
+}

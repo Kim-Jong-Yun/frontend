@@ -1,0 +1,281 @@
+.robot-edit-page {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.main-content {
+  display: flex;
+  height: calc(100vh - 100px); /* 네비게이션 바를 제외한 전체 화면 높이 */
+  background-color: #f9f9f9;
+}
+
+.robot-list-container {
+  width: 30%;
+  background-color: #f5f5f5;
+  padding: 20px;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
+  border-right: 1px solid #ccc;
+}
+
+.robot-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.robot-list li {
+  padding: 15px;
+  margin-bottom: 10px;
+  background-color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
+}
+
+.robot-list li:hover {
+  background-color: #e0e0e0;
+}
+
+.robot-list li.selected {
+  background-color: #d0d0d0;
+}
+
+.robot-details-container {
+  flex-grow: 1;
+  padding: 20px;
+}
+
+.robot-form .robot-field {
+  margin-bottom: 20px;
+}
+
+.input-field {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+/* 읽기 전용 IP 주소, 모델, 상태 및 등록 시간 */
+.robot-info {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.robot-info div {
+  width: 45%;
+  margin-bottom: 10px;
+}
+
+.robot-info p {
+  margin: 0;
+  font-size: 16px;
+}
+
+/* 오른쪽 하단에 고정된 플로팅 버튼 컨테이너 */
+.floating-buttons {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  display: flex;
+  gap: 10px;
+}
+
+.floating-save-button, .floating-delete-button {
+  padding: 15px 30px;
+  border: none;
+  border-radius: 50px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.floating-save-button {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.floating-save-button:hover {
+  background-color: #45a049;
+}
+
+.floating-delete-button {
+  background-color: #f44336;
+  color: white;
+}
+
+.floating-delete-button:hover {
+  background-color: #e53935;
+}
+
+/* 토글 스위치 */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: gray;
+  transition: 0.4s;
+  border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: green;
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+/* 모달 스타일 */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 500px;
+  width: 100%;
+  position: relative;
+  z-index: 1001;
+}
+
+/* 작업 플로우 디자인 스타일 */
+.robot-flow-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 20px;
+  width: 97%;
+}
+
+.robot-flow-background {
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.robot-flow-list {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.robot-flow-item {
+  position: relative; /* 삭제 버튼의 절대 위치를 위해 상대 위치 지정 */
+  background-color: #e0e0e0;
+  width: 90px;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  font-size: 14px;
+  color: #333;
+  text-align: center;
+  padding: 5px;
+  line-height: 1.2;
+}
+
+.delete-button {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background: transparent;
+  border: none;
+  font-size: 16px;
+  color: #f44336;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.delete-button:hover {
+  color: #d32f2f;
+}
+
+.workflow-details {
+  margin-top: 20px; /* 삭제 버튼과 겹치지 않도록 마진 추가 */
+  width: 100%;
+}
+
+/* 스피너 스타일 */
+.spinner {
+  border: 2px solid #f3f3f3; /* Light grey */
+  border-top: 2px solid #3498db; /* Blue */
+  border-radius: 50%;
+  width: 14px;
+  height: 14px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* 플로팅 버튼과 모달 위의 워크플로우 아이템 삭제 버튼 조정 */
+.robot-flow-item .delete-button {
+  font-size: 18px; /* 필요에 따라 조정 가능 */
+}
+.robot-flow-item:first-child {
+  background-color: #5ea2da; /* Blue background */
+  color: white; /* Ensures text is readable on blue background */
+}

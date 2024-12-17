@@ -1,0 +1,101 @@
+/* 전체 컨테이너 스타일 */
+.task-flow-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 20px;
+    width: 97%;
+}
+
+/* 큰 배경을 포함한 작업 플로우 공간 */
+.task-flow-background {
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+/* 플로우 목록 */
+.task-flow-list {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+
+/* 개별 작업 플로우 사각형 */
+.task-flow-item {
+    background-color: #e0e0e0;
+    width: 90px; /* 너비 증가 */
+    height: 100px; /* 높이 증가 */
+    display: flex;
+    flex-direction: column; /* 세로 정렬로 변경 */
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    font-size: 14px; /* 글씨 크기 줄임 */
+    color: #333;
+    position: relative;
+    text-align: center;
+    padding: 5px;
+    line-height: 1.2;
+}
+
+/* 첫 번째 줄에 노드 이름, 두 번째 줄에 단계 */
+.task-flow-item div {
+    margin: 2px 0;
+}
+
+/* 임시 아이템을 위한 색상 */
+.task-flow-item.temporary {
+    background-color: #9cc2e4;
+}
+
+/* 삭제 버튼 (X) 스타일 */
+.task-flow-remove-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: transparent;
+    border: none;
+    color: #888;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 0;
+}
+
+.task-flow-remove-btn:hover {
+    color: #f00;
+}
+
+/* 플로우 추가 버튼 컨테이너 */
+.task-flow-add {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #9bafee;
+    border-radius: 10px;
+    width: 90px;
+    height: 100px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}
+
+/* 플러스 아이콘 스타일 */
+.task-flow-button {
+    font-size: 40px;
+    color: white;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.task-flow-add:hover {
+    background-color: #6169d4;
+}

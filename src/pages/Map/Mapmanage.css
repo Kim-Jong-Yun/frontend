@@ -1,0 +1,305 @@
+.map-management-page {
+    font-family: Arial, sans-serif;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.map-management-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    border-bottom: 1px solid #ccc;
+}
+
+/* 툴바 */
+.toolbar {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 10px;
+    background-color: #f5f5f5;
+    border-bottom: 1px solid #ddd;
+}
+
+.map-management-content {
+    display: flex;
+    flex-grow: 1;
+    height: calc(100% - 170px);
+    padding: 20px;
+    overflow: hidden;
+}
+
+/* 맵 리스트 섹션 */
+.map-list-container {
+    flex: 0.5;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-right: 5px;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+}
+
+.map-list-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+}
+
+.map-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.map-list-item {
+    padding: 10px;
+    cursor: pointer;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 5px;
+    transition: background-color 0.2s ease;
+}
+
+.map-list-item:hover {
+    background-color: #f9f9f9;
+}
+
+.selected-map {
+    background-color: #e8f4ff;
+    border: 1px solid #90caf9;
+}
+
+.map-list-item-name {
+    flex-grow: 1;
+    font-size: 16px;
+    color: #555;
+    font-weight: 500;
+}
+
+/* 편집 버튼과 삭제 버튼의 독립적 스타일 설정 */
+.map-list-container .edit-map-button,
+.map-list-container .delete-map-button {
+    background-color: transparent !important;
+    border: none !important;
+    cursor: pointer !important;
+    font-size: 16px !important;
+    color: #777 !important; /* 기본 색상 유지 */
+    transition: none !important; /* 상위 컴포넌트의 hover 효과 제거 */
+}
+
+.map-list-container .edit-map-button:hover,
+.map-list-container .delete-map-button:hover {
+    color: #777 !important; /* 호버 시에도 색상 유지 */
+}
+
+/* 삭제 버튼만의 색상 */
+.map-list-container .delete-map-button {
+    color: red !important; /* 기본 빨간색 유지 */
+}
+
+/* 부드러운 버튼 공통 스타일 */
+button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 10px 15px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    color: #ffffff;
+}
+
+/* 맵 관련 버튼 */
+.add-map-button,
+.create-node-button,
+.connect-node-button,
+.create-nogozone-button,
+.map-patch-button,
+.send-to-robots-button {
+    background-color: #6c91c2; /* 파스텔 블루 */
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.add-map-button:hover,
+.create-node-button:hover,
+.connect-node-button:hover,
+.create-nogozone-button:hover,
+.map-patch-button:hover,
+.send-to-robots-button:hover {
+    background-color: #587ba0; /* 짙은 파스텔 블루 */
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* 삭제 관련 버튼 */
+.delete-node-button,
+.delete-nogozone-button,
+.disconnect-node-button {
+    background-color: #f2a5a5; /* 파스텔 레드 */
+    color: #ffffff;
+}
+
+.delete-node-button:hover,
+.delete-nogozone-button:hover,
+.disconnect-node-button:hover {
+    background-color: #d98888; /* 짙은 파스텔 레드 */
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* 지도 이미지와 노드 목록 */
+.map-image-and-node-list {
+    display: flex;
+    flex: 2;
+    gap: 10px;
+    width: 100%;
+    overflow: hidden;
+}
+
+.map-image-container {
+    flex: 2;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    cursor: auto;
+}
+
+.map-image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+/* 팝업 스타일 */
+.popup-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    width: 400px;
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+
+.popup-submit-button {
+    background-color: #6c91c2; /* 파스텔 블루 */
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    padding: 10px 15px;
+}
+
+.popup-submit-button:hover {
+    background-color: #587ba0;
+}
+
+.popup-cancel-button {
+    background-color: #f2a5a5; /* 파스텔 레드 */
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    padding: 10px 15px;
+}
+
+.popup-cancel-button:hover {
+    background-color: #d98888;
+}
+
+/* 반응형 레이아웃 */
+@media (max-width: 1024px) {
+    .map-management-content {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .map-list-container {
+        padding-right: 0;
+        border-right: none;
+    }
+
+    .map-image-and-node-list {
+        flex-direction: column;
+    }
+
+    .map-image-container {
+        margin-top: 10px;
+    }
+
+    .node-list-container {
+        padding-left: 0;
+        border-left: none;
+        margin-top: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .map-management-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .toolbar {
+        flex-direction: column;
+    }
+}
+.floating-buttons {
+    position: fixed;
+    bottom: 20px; /* 화면 하단으로부터 20px 위 */
+    right: 20px; /* 화면 오른쪽으로부터 20px 왼쪽 */
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* 버튼 간격 */
+    z-index: 1000; /* 다른 요소 위에 표시 */
+}
+
+/* 플로팅 버튼 공통 스타일 */
+.floating-buttons button {
+    background-color: #6c91c2; /* 파스텔 블루 */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 15px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* 플로팅 버튼 호버 스타일 */
+.floating-buttons button:hover {
+    background-color: #587ba0; /* 진한 파스텔 블루 */
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* 맵 패치 버튼 로딩 상태 */
+.floating-buttons button:disabled {
+    background-color: #ddd; /* 비활성화 시 색상 */
+    cursor: not-allowed; /* 비활성화 커서 */
+    transform: none;
+    box-shadow: none;
+}

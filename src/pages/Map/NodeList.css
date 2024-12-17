@@ -1,0 +1,219 @@
+/* NodeList 전체 스타일 */
+.node-list-container {
+  padding: 20px;
+  background-color: #f4f5f7; /* 밝은 회색 배경 */
+  border-left: 1px solid #d9d9d9; /* 연한 경계선 */
+  height: 100%;
+  overflow-y: auto;
+  position: relative;
+  z-index: 1;
+}
+
+.node-list-container h3 {
+  margin-bottom: 10px;
+  font-size: 16px;
+  color: #333;
+}
+
+.node-list-container ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.node-list-container li {
+  padding: 8px 0;
+  border-bottom: 1px solid #e0e6ed; /* 연한 경계선 */
+}
+
+.node-list-container li strong {
+  color: #2e3a59; /* 진한 회색 텍스트 */
+}
+
+/* 개별 노드 리스트 항목 스타일 */
+.node-list-item {
+  padding: 10px;
+}
+
+.node-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+/* 노드 세부 정보 확장 및 접기 스타일 */
+.node-details-wrapper {
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+  max-height: 0;
+}
+
+.node-details-wrapper.expanded {
+  max-height: 200px; /* 확장 시 최대 높이 */
+}
+
+.node-details-wrapper.collapsed {
+  max-height: 0; /* 접힘 상태 */
+}
+
+.node-details {
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #ffffff; /* 흰색 배경 */
+  border-radius: 5px;
+  border: 1px solid #d9d9d9; /* 연한 경계선 */
+}
+
+/* Step 추가 버튼 스타일 */
+.add-step-button {
+  margin-top: 10px;
+  padding: 10px 15px;
+  background-color: #6c91c2; /* 파스텔 블루 */
+  color: white;
+  border: none;
+  border-radius: 20px; /* 둥근 모서리 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.add-step-button:hover {
+  background-color: #587ba0; /* hover 시 더 짙은 블루 */
+}
+
+.add-step-text {
+  margin-left: 8px; /* 아이콘과 텍스트 사이 간격 */
+}
+
+/* 모달 스타일 */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999; /* 가장 위에 표시 */
+}
+
+.modal-content {
+  background: white;
+  padding: 20px;
+  border-radius: 8px; /* 둥근 모서리 */
+  width: 400px;
+  max-height: 80%;
+  overflow-y: auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 부드러운 그림자 */
+}
+
+.modal-content h2 {
+  margin-top: 0;
+  font-size: 18px;
+  color: #2e3a59;
+}
+
+.modal-content p {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.modal-content button {
+  padding: 10px 20px;
+  margin-top: 10px;
+  border: none;
+  background-color: #6c91c2; /* 파스텔 블루 */
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.modal-content button:hover {
+  background-color: #587ba0; /* hover 시 블루 */
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: space-between;
+}
+
+button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+/* Node Tasks */
+.node-tasks {
+  margin-top: 10px;
+  max-height: 150px; /* 최대 높이 설정 */
+  overflow-y: auto; /* 스크롤 활성화 */
+}
+
+.node-tasks ul {
+  list-style-type: disc;
+  padding-left: 20px;
+}
+
+.node-tasks h4 {
+  margin-bottom: 5px;
+  font-size: 14px;
+  color: #2e3a59;
+}
+
+.node-tasks p {
+  color: gray;
+  font-size: 13px;
+}
+
+.node-tasks-inline {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.task-item {
+  margin-right: 5px;
+}
+
+/* Step 편집 버튼 */
+.edit-step-button {
+  background: none;
+  border: none;
+  color: #6c91c2; /* 파스텔 블루 */
+  cursor: pointer;
+  font-size: 1em;
+  margin-left: 10px;
+}
+
+.edit-step-button:hover {
+  color: #587ba0; /* hover 시 짙은 블루 */
+}
+
+/* Node List Header */
+.node-list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Step 관리 버튼 */
+.step-list-manage-button {
+  background-color: #6c91c2; /* 파스텔 블루 */
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.step-list-manage-button:hover {
+  background-color: #587ba0; /* hover 시 짙은 블루 */
+}

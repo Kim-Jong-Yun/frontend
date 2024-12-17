@@ -1,0 +1,41 @@
+.create-task-flow-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    position: relative; /* 자식 요소 배치를 위해 상대 위치 설정 */
+}
+
+.map-preview {
+    flex: 1;
+    margin-right: 20px;
+    width: 800px; /* 지도의 너비 설정 */
+    height: 600px; /* 지도의 높이 설정 */
+    border: 1px solid #ccc;
+}
+
+.task-flow-form {
+    width: 300px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    height: 200px; /* 작업 플로우 추가 폼의 고정 높이 설정 */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    
+    /* 폼을 맵 이미지 필드의 세로 중앙에 맞춤 */
+    align-self: center; /* 부모 컨테이너의 중심에 맞추기 */
+}
+
+.task-flow-form input {
+    margin-bottom: 10px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.task-flow-form .buttons {
+    display: flex;
+    justify-content: space-between;
+}
