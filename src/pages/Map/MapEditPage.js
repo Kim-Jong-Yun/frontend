@@ -24,7 +24,7 @@ function MapEditPage() {
     }
 
     try {
-      const response = await axios.get('http://13.209.28.158:5557/map/maps', {
+      const response = await axios.get('http://3.39.166.207:5557/map/maps', {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -58,7 +58,7 @@ function MapEditPage() {
     }
 
     try {
-      await axios.put(`http://13.209.28.158:5557/map/update/${selectedMap._id}`, {
+      await axios.put(`http://3.39.166.207:5557/map/update/${selectedMap._id}`, {
         name,
         description,
         isMonitored
@@ -85,7 +85,7 @@ function MapEditPage() {
     }
 
     try {
-      await axios.post('http://13.209.28.158:5559/robot/send_map', {}, {
+      await axios.post('http://3.39.166.207:5559/robot/send_map', {}, {
         headers: {
           'Authorization': `Bearer ${token}`,
           'Content-Type': 'application/json'
@@ -118,7 +118,7 @@ function MapEditPage() {
     }
 
     try {
-      await axios.put(`http://13.209.28.158:5557/map/delete/${selectedMap._id}`, {}, {
+      await axios.put(`http://3.39.166.207:5557/map/delete/${selectedMap._id}`, {}, {
         headers: {
           'Authorization': `Bearer ${token}`,
           'Content-Type': 'application/json'

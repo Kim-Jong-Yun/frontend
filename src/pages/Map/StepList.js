@@ -20,7 +20,7 @@ function StepList() {
           return;
         }
 
-        const response = await axios.get('http://13.209.28.158:5557/map/steps', {
+        const response = await axios.get('http://3.39.166.207:5557/map/steps', {
           headers: {
             'Authorization': `Bearer ${token}` // Bearer 토큰을 헤더에 추가
           }
@@ -46,7 +46,7 @@ function StepList() {
 
     try {
       const token = localStorage.getItem('token'); // 인증 토큰 가져오기
-      await axios.put('http://13.209.28.158:5557/map/remove-step', { stepId }, {
+      await axios.put('http://3.39.166.207:5557/map/remove-step', { stepId }, {
         headers: {
           'Authorization': `Bearer ${token}`,
           'Content-Type': 'application/json'
@@ -70,7 +70,7 @@ function StepList() {
 
     try {
       const token = localStorage.getItem('token'); // 로컬 스토리지에서 인증 토큰을 가져옴
-      const response = await axios.post('http://13.209.28.158:5557/map/steps', { name: taskName }, {
+      const response = await axios.post('http://3.39.166.207:5557/map/steps', { name: taskName }, {
         headers: {
           'Authorization': `Bearer ${token}` // 인증 토큰 추가
         }

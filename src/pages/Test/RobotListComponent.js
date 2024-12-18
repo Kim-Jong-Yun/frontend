@@ -20,13 +20,13 @@ function RobotListComponent({ robots }) {
 
   const fetchMonitoredMapTasks = async () => {
     try {
-      const mapResponse = await axios.get('http://13.209.28.158:5557/map/monitored', {
+      const mapResponse = await axios.get('http://3.39.166.207:5557/map/monitored', {
         headers: { Authorization: `Bearer ${token}` },
       });
       const monitoredMapData = mapResponse.data;
       
       if (monitoredMapData?._id) {
-        const taskResponse = await axios.get(`http://13.209.28.158:8080/task/tasks?mapId=${monitoredMapData._id}`, {
+        const taskResponse = await axios.get(`http://3.39.166.207:8080/task/tasks?mapId=${monitoredMapData._id}`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         setTaskList(taskResponse.data);
@@ -61,7 +61,7 @@ function RobotListComponent({ robots }) {
         console.log("Sending data:", { robotId: selectedRobot._id, node, step });
 
         await axios.post(
-          'http://13.209.28.158:5559/robot/addWorkflow',
+          'http://3.39.166.207:5559/robot/addWorkflow',
           {
             robotId: selectedRobot._id, // 로봇의 _id 전달
             node, // 각 워크플로우의 node 전달

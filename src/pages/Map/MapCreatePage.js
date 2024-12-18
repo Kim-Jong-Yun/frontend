@@ -14,7 +14,7 @@ function MapCreatePage() {
     const fetchRobots = async () => {
       try {
         const token = localStorage.getItem('token');
-        const response = await axios.get('http://13.209.28.158:5559/robot/robots', {
+        const response = await axios.get('http://3.39.166.207:5559/robot/robots', {
             headers: { 
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${token}` 

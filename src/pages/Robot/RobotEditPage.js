@@ -7,7 +7,7 @@ import './RobotEditPage.css';
 import RobotRegisterPage from './RobotRegisterPage';
 
 // 환경 변수로 API URL 관리 (필요 시 .env 파일에 추가)
-const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'http://13.209.28.158:5559/robot';
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'http://3.39.166.207:5559/robot';
 
 function RobotEditPage() {
   const [robots, setRobots] = useState([]);

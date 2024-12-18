@@ -84,7 +84,7 @@ function NoGoZone({ mapId, onClose, onNoGoZoneCreated }) {
     const bottomRight = { x: rect.x + rect.width, y: rect.y + rect.height };
 
     try {
-      await axios.post('http://13.209.28.158:5557/map/no-go-zones', {
+      await axios.post('http://3.39.166.207:5557/map/no-go-zones', {
         topLeft,
         bottomRight,
         mapId,

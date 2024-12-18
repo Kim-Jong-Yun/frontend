@@ -35,7 +35,7 @@ function NodeList({ mapId }) { // mapId를 prop으로 받음
   // StepList 데이터를 가져오는 함수
   const fetchStepList = async () => {
     try {
-      const response = await axios.get('http://13.209.28.158:5557/map/steps', {
+      const response = await axios.get('http://3.39.166.207:5557/map/steps', {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -50,7 +50,7 @@ function NodeList({ mapId }) { // mapId를 prop으로 받음
   // Node 데이터를 특정 맵 ID로 필터링하여 가져오는 함수
   const fetchNodes = async (mapId) => {
     try {
-      const response = await axios.get(`http://13.209.28.158:5557/map/nodes/${mapId}`, { // mapId를 포함한 URL로 변경
+      const response = await axios.get(`http://3.39.166.207:5557/map/nodes/${mapId}`, { // mapId를 포함한 URL로 변경
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -98,7 +98,7 @@ function NodeList({ mapId }) { // mapId를 prop으로 받음
 
     try {
       const response = await axios.post(
-        'http://13.209.28.158:5557/map/node/add-step', 
+        'http://3.39.166.207:5557/map/node/add-step', 
         {
           nodeId: currentNodeId,
           stepId: selectedStep

@@ -40,7 +40,7 @@ function MapUploadPage() {
     }
 
     try {
-      await axios.post('http://13.209.28.158:5557/map/upload', formData, {
+      await axios.post('http://3.39.166.207:5557/map/upload', formData, {
         headers: {
           'Authorization': `Bearer ${token}`,
           'Content-Type': 'multipart/form-data'

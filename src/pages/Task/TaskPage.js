@@ -29,7 +29,7 @@ function TaskPage() {
 
     const fetchMonitoredMapName = async () => {
         try {
-            const mapResponse = await axios.get('http://13.209.28.158:5557/map/monitored', {
+            const mapResponse = await axios.get('http://3.39.166.207:5557/map/monitored', {
                 headers: { Authorization: `Bearer ${token}` },
             });
 
@@ -47,7 +47,7 @@ function TaskPage() {
 
     const fetchTasks = async () => {
         try {
-            const mapResponse = await axios.get('http://13.209.28.158:5557/map/monitored', {
+            const mapResponse = await axios.get('http://3.39.166.207:5557/map/monitored', {
                 headers: { Authorization: `Bearer ${token}` },
             });
 
@@ -57,7 +57,7 @@ function TaskPage() {
                 return;
             }
 
-            const taskResponse = await axios.get(`http://13.209.28.158:8080/task/tasks?mapId=${monitoredMapData._id}`, {
+            const taskResponse = await axios.get(`http://3.39.166.207:8080/task/tasks?mapId=${monitoredMapData._id}`, {
                 headers: { Authorization: `Bearer ${token}` },
             });
             setTasks(taskResponse.data);
@@ -114,13 +114,13 @@ function TaskPage() {
         }
 
         try {
-            await axios.put(`http://13.209.28.158:8080/task/tasks/${selectedTask._id}`, updatedTask, {
+            await axios.put(`http://3.39.166.207:8080/task/tasks/${selectedTask._id}`, updatedTask, {
                 headers: { Authorization: `Bearer ${token}` },
             });
 
             for (const { taskId, nodeId } of deletedWorkflowNodes) {
                 await axios.put(
-                    `http://13.209.28.158:8080/task/tasks/${taskId}/workflow/${nodeId}/nodeToZero`,
+                    `http://3.39.166.207:8080/task/tasks/${taskId}/workflow/${nodeId}/nodeToZero`,
                     null,
                     { headers: { Authorization: `Bearer ${token}` } }
                 );
@@ -135,7 +135,7 @@ function TaskPage() {
             alert('작업이 성공적으로 저장되었습니다.');
             await fetchTasks();
 
-            const updatedTasks = await axios.get(`http://13.209.28.158:8080/task/tasks?mapId=${selectedTask.mapId}`, {
+            const updatedTasks = await axios.get(`http://3.39.166.207:8080/task/tasks?mapId=${selectedTask.mapId}`, {
                 headers: { Authorization: `Bearer ${token}` },
             });
             const savedTask = updatedTasks.data.find((task) => task._id === selectedTask._id);
@@ -177,7 +177,7 @@ function TaskPage() {
         if (!confirmDelete) return;
 
         try {
-            await axios.put(`http://13.209.28.158:8080/task/tasks/${selectedTask._id}/delete`, null, {
+            await axios.put(`http://3.39.166.207:8080/task/tasks/${selectedTask._id}/delete`, null, {
                 headers: { Authorization: `Bearer ${token}` },
             });
 
@@ -307,7 +307,7 @@ function AssignTaskPopup({ onClose, selectedTask }) {
     useEffect(() => {
         const fetchActiveRobots = async () => {
             try {
-                const response = await axios.get('http://13.209.28.158:5559/robot/robots/active', {
+                const response = await axios.get('http://3.39.166.207:5559/robot/robots/active', {
                     headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
                 });
                 setRobots(response.data);
@@ -338,7 +338,7 @@ function AssignTaskPopup({ onClose, selectedTask }) {
             for (const flow of selectedTask.workflow) {
                 // x와 y를 포함하여 전송하도록 수정 (필요 시 주석 해제)
                 await axios.post(
-                    'http://13.209.28.158:5559/robot/addWorkflow',
+                    'http://3.39.166.207:5559/robot/addWorkflow',
                     {
                         robotId: selectedRobot,
                         node: flow.node,
