@@ -9,7 +9,7 @@ function ControlPage() {
     useEffect(() => {
         const fetchRobots = async () => {
             try {
-                const response = await axios.get('http://localhost:5559/robots');
+                const response = await axios.get('http://13.209.28.158:5559/robots');
                 setRobots(response.data);
             } catch (error) {
                 console.error('Error fetching robots:', error);
@@ -26,7 +26,7 @@ function ControlPage() {
     const handleMoveRobot = async () => {
         if (selectedRobot) {
             try {
-                const response = await axios.post(`http://localhost:5559/robots/control/${selectedRobot.id}`, {
+                const response = await axios.post(`http://13.209.28.158:5559/robots/control/${selectedRobot.id}`, {
                     position: targetPosition
                 });
                 if (response.status === 200) {

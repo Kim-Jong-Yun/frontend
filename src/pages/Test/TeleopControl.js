@@ -5,7 +5,7 @@ import './TeleopControl.css';
 
 function TeleopControl({ robotName, onClose }) {
   const ros = new ROSLIB.Ros({
-    url: 'ws://localhost:9090', // rosbridge WebSocket 주소
+    url: 'ws://13.209.28.158:9090', // rosbridge WebSocket 주소
   });
 
   const cmdVel = new ROSLIB.Topic({

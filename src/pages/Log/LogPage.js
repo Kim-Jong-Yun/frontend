@@ -7,7 +7,7 @@ function LogPage() {
     useEffect(() => {
         const fetchLogs = async () => {
             try {
-                const response = await axios.get('http://localhost:5559/logs');
+                const response = await axios.get('http://13.209.28.158:5559/logs');
                 setLogs(response.data);
             } catch (error) {
                 console.error('Error fetching logs:', error);
