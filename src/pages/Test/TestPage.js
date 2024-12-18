@@ -47,11 +47,11 @@ function TestPage() {
 
     try {
       // 모니터링 중인 맵의 정보와 ID를 가져오는 API 호출
-      const response = await axios.get('http://3.35.87.118:5557/map/monitored', {
+      const response = await axios.get('http://13.209.28.158:5557/map/monitored', {
         headers: { Authorization: `Bearer ${token}` },
       });
       const mapData = response.data;
-      const mapFileResponse = await axios.get(`http://3.35.87.118:5557/map/file/${mapData._id}`, {
+      const mapFileResponse = await axios.get(`http://13.209.28.158:5557/map/file/${mapData._id}`, {
         headers: { Authorization: `Bearer ${token}` },
         responseType: 'blob',
       });
@@ -73,7 +73,7 @@ function TestPage() {
     }
 
     try {
-      const response = await axios.get('http://3.35.87.118:5559/robot/robots', {
+      const response = await axios.get('http://13.209.28.158:5559/robot/robots', {
         headers: { Authorization: `Bearer ${token}` },
       });
       setRobots(response.data); // 로봇 데이터를 상태에 저장
@@ -91,7 +91,7 @@ function TestPage() {
     }
   
     try {
-      const response = await axios.get('http://3.35.87.118:8080/task/task-logs', {
+      const response = await axios.get('http://13.209.28.158:8080/task/task-logs', {
         headers: { Authorization: `Bearer ${token}` },
       });
   

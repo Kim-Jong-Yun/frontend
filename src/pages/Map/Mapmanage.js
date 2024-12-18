@@ -75,7 +75,7 @@ function Mapmanage() {
     }
 
     try {
-      const response = await axios.get('http://3.35.87.118:5557/map/maps', {
+      const response = await axios.get('http://13.209.28.158:5557/map/maps', {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -98,7 +98,7 @@ function Mapmanage() {
   // 노드 목록을 서버에서 가져오는 함수
   const fetchNodes = async (mapId) => {
     try {
-      const response = await axios.get(`http://3.35.87.118:5557/map/nodes/${mapId}`);
+      const response = await axios.get(`http://13.209.28.158:5557/map/nodes/${mapId}`);
       if (response.status === 200) {
         setNodes(response.data);
       } else {
@@ -119,7 +119,7 @@ function Mapmanage() {
       return;
     }
     try {
-      const response = await axios.get(`http://3.35.87.118:5557/map/no-go-zones/map/${mapId}`, {
+      const response = await axios.get(`http://13.209.28.158:5557/map/no-go-zones/map/${mapId}`, {
         headers: {
           'Authorization': `Bearer ${token}`,
         },
@@ -140,7 +140,7 @@ function Mapmanage() {
 
     const token = localStorage.getItem('token');
     try {
-      const response = await axios.get(`http://3.35.87.118:5557/map/file/${map._id}`, {
+      const response = await axios.get(`http://13.209.28.158:5557/map/file/${map._id}`, {
         headers: { Authorization: `Bearer ${token}` },
         responseType: 'blob',
       });
@@ -414,7 +414,7 @@ function Mapmanage() {
 
       const token = localStorage.getItem('token');
       try {
-        const response = await axios.post('http://3.35.87.118:5557/map/no-go-zones', noGoZone, {
+        const response = await axios.post('http://13.209.28.158:5557/map/no-go-zones', noGoZone, {
           headers: { Authorization: `Bearer ${token}` },
         });
         alert('금지 구역이 성공적으로 생성되었습니다.');
@@ -499,7 +499,7 @@ function Mapmanage() {
     if (!confirmDelete) return;
 
     try {
-      await axios.delete(`http://3.35.87.118:5557/map/no-go-zones/${zoneId}`, {
+      await axios.delete(`http://13.209.28.158:5557/map/no-go-zones/${zoneId}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       alert('금지 구역이 성공적으로 삭제되었습니다.');
@@ -661,7 +661,7 @@ function Mapmanage() {
           if (confirmDelete) {
             try {
               const token = localStorage.getItem('token');
-              await axios.delete(`http://3.35.87.118:5557/map/node/${nodeToDelete._id}`, {
+              await axios.delete(`http://13.209.28.158:5557/map/node/${nodeToDelete._id}`, {
                 headers: { Authorization: `Bearer ${token}` },
               });
               alert('노드가 성공적으로 삭제되었습니다.');
@@ -728,7 +728,7 @@ function Mapmanage() {
     }
 
     try {
-      await axios.post('http://3.35.87.118:5557/map/nodes', {
+      await axios.post('http://13.209.28.158:5557/map/nodes', {
         name: nodeName,
         x: nodeX,
         y: nodeY,
@@ -762,7 +762,7 @@ function Mapmanage() {
     if (!confirmDelete) return;
 
     try {
-      await axios.put(`http://3.35.87.118:5557/map/delete/${mapId}`, {}, {
+      await axios.put(`http://13.209.28.158:5557/map/delete/${mapId}`, {}, {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -808,7 +808,7 @@ function Mapmanage() {
     }
 
     try {
-      await axios.put(`http://3.35.87.118:5557/map/update/${selectedMap._id}`, {
+      await axios.put(`http://13.209.28.158:5557/map/update/${selectedMap._id}`, {
         name: editName,
         description: editDescription,
         isMonitored
@@ -850,7 +850,7 @@ function Mapmanage() {
     }
 
     try {
-      await axios.post('http://3.35.87.118:5557/map/upload', formData, {
+      await axios.post('http://13.209.28.158:5557/map/upload', formData, {
         headers: {
           'Authorization': `Bearer ${token}`,
           'Content-Type': 'multipart/form-data'
@@ -918,7 +918,7 @@ function Mapmanage() {
     }
 
     try {
-      await axios.post('http://3.35.87.118:5559/robot/send_map', {}, {
+      await axios.post('http://13.209.28.158:5559/robot/send_map', {}, {
         headers: {
           'Authorization': `Bearer ${token}`,
           'Content-Type': 'application/json'
@@ -951,13 +951,13 @@ function Mapmanage() {
 
     try {
       // Step 1: 기존 경로 데이터 삭제
-      await axios.delete(`http://3.35.87.118:5557/map/shortpaths/map/${selectedMap._id}`, {
+      await axios.delete(`http://13.209.28.158:5557/map/shortpaths/map/${selectedMap._id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       console.log('기존 ShortPath 데이터가 삭제되었습니다.');
 
       // Step 2: 새로운 경로 계산 및 저장
-      const response = await axios.post('http://3.35.87.118:5557/map/calculate-paths', {
+      const response = await axios.post('http://13.209.28.158:5557/map/calculate-paths', {
         mapId: selectedMap._id
       }, {
         headers: {
@@ -992,7 +992,7 @@ function Mapmanage() {
       const totalDistance = calculateTotalDistance(node1._id, node2._id, waypoints);
 
       const token = localStorage.getItem('token');
-      await axios.post(`http://3.35.87.118:5557/map/node/connect`, {
+      await axios.post(`http://13.209.28.158:5557/map/node/connect`, {
         node1: node1._id,
         node2: node2._id,
         waypoints: waypoints, // 웨이포인트는 좌표값으로 전달

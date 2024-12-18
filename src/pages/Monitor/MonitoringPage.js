@@ -16,7 +16,7 @@ const MonitoringPage = () => {
     fetchMonitoredMap();
     fetchMapMetadata();
 
-    const ws = new WebSocket('ws://3.35.87.118:5050'); // WebSocket 서버 주소
+    const ws = new WebSocket('ws://13.209.28.158:5050'); // WebSocket 서버 주소
 
     ws.onmessage = (event) => {
       const robotPositions = JSON.parse(event.data);
@@ -40,7 +40,7 @@ const MonitoringPage = () => {
   const fetchMonitoredMap = async () => {
     const token = localStorage.getItem('token');
     try {
-      const response = await axios.get('http://3.35.87.118:5557/map/monitored/file', {
+      const response = await axios.get('http://13.209.28.158:5557/map/monitored/file', {
         headers: { Authorization: `Bearer ${token}` },
         responseType: 'blob',
       });
@@ -61,7 +61,7 @@ const MonitoringPage = () => {
   const fetchMapMetadata = async () => {
     const token = localStorage.getItem('token');
     try {
-      const response = await axios.get('http://3.35.87.118:5557/map/monitored/metadata', {
+      const response = await axios.get('http://13.209.28.158:5557/map/monitored/metadata', {
         headers: { Authorization: `Bearer ${token}` },
       });
       const metadata = response.data;

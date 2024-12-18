@@ -21,7 +21,7 @@ function Navbar() {
                     <Link to="/map_manage">맵 관리</Link>
                 </li>
                 <li className={location.pathname === '/robot_manage' ? 'selected' : ''}>
-                    <Link to="/robot_manage">테스트</Link>
+                    <Link to="/robot_manage"></Link>
                 </li>
             </ul>
         </nav>

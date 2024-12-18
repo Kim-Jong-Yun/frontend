@@ -11,7 +11,7 @@ function RegisterPage() {
     const handleSubmit = async (event) => {
         event.preventDefault();
 
-        const response = await fetch('http://3.35.87.118:5555/account/register', {
+        const response = await fetch('http://13.209.28.158:5555/account/register', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

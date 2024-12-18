@@ -23,7 +23,7 @@ function MapComponent({ robots, mapUrl, mapId }) {
         return;
       }
 
-      const response = await axios.get(`http://3.35.87.118:5557/map/nodes/${mapId}`, {
+      const response = await axios.get(`http://13.209.28.158:5557/map/nodes/${mapId}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setNodes(response.data);
@@ -41,7 +41,7 @@ function MapComponent({ robots, mapUrl, mapId }) {
         return;
       }
 
-      const response = await axios.get(`http://3.35.87.118:5557/map/no-go-zones/map/${mapId}`, {
+      const response = await axios.get(`http://13.209.28.158:5557/map/no-go-zones/map/${mapId}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setNoGoZones(response.data);

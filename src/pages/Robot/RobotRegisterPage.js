@@ -48,7 +48,7 @@ function RobotRegisterPage({ onClose }) {
 
     try {
       await axios.post(
-        'http://3.35.87.118:5559/robot/register',
+        'http://13.209.28.158:5559/robot/register',
         { name, ip, model, sshUser }, // sshUser 추가
         {
           headers: {

@@ -14,7 +14,7 @@ function CreateTask({ onClose, onTaskCreated }) {
     useEffect(() => {
         async function fetchMonitoredMap() {
             try {
-                const response = await axios.get('http://3.35.87.118:5557/map/monitored', {
+                const response = await axios.get('http://13.209.28.158:5557/map/monitored', {
                     headers: { Authorization: `Bearer ${token}` },
                 });
                 setMonitoredMapId(response.data._id); // 모니터링 중인 맵의 ID 저장
@@ -34,7 +34,7 @@ function CreateTask({ onClose, onTaskCreated }) {
 
         try {
             // 작업 생성 API 요청
-            const response = await axios.post('http://3.35.87.118:8080/task/tasks', {
+            const response = await axios.post('http://13.209.28.158:8080/task/tasks', {
                 name: taskName,
                 description: taskDescription,
                 mapId: monitoredMapId, // 모니터링 중인 맵 ID를 포함

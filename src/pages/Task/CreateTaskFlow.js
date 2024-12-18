@@ -31,7 +31,7 @@ function CreateTaskFlow({ onClose, onTaskFlowAdd }) {
     const fetchMonitoredMap = async () => {
         try {
             const token = localStorage.getItem('token');
-            const response = await axios.get('http://3.35.87.118:5557/map/monitored', {
+            const response = await axios.get('http://13.209.28.158:5557/map/monitored', {
                 headers: { Authorization: `Bearer ${token}` },
             });
             setMonitoredMap(response.data);
@@ -48,7 +48,7 @@ function CreateTaskFlow({ onClose, onTaskFlowAdd }) {
     const fetchNoGoZones = async (mapId) => {
         try {
             const token = localStorage.getItem('token');
-            const response = await axios.get(`http://3.35.87.118:5557/map/no-go-zones/map/${mapId}`, {
+            const response = await axios.get(`http://13.209.28.158:5557/map/no-go-zones/map/${mapId}`, {
                 headers: { Authorization: `Bearer ${token}` },
             });
             setNoGoZones(response.data);
@@ -62,7 +62,7 @@ function CreateTaskFlow({ onClose, onTaskFlowAdd }) {
     const fetchAllSteps = async () => {
         try {
             const token = localStorage.getItem('token');
-            const response = await axios.get('http://3.35.87.118:5557/map/steps', {
+            const response = await axios.get('http://13.209.28.158:5557/map/steps', {
                 headers: { Authorization: `Bearer ${token}` },
             });
             setAllSteps(response.data);
@@ -75,7 +75,7 @@ function CreateTaskFlow({ onClose, onTaskFlowAdd }) {
     // 노드 리스트를 불러오는 함수
     const fetchNodes = async (mapId) => {
         try {
-            const response = await axios.get(`http://3.35.87.118:5557/map/nodes/${mapId}`, {
+            const response = await axios.get(`http://13.209.28.158:5557/map/nodes/${mapId}`, {
                 headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
             });
             setNodes(response.data);
@@ -92,7 +92,7 @@ function CreateTaskFlow({ onClose, onTaskFlowAdd }) {
 
         try {
             const token = localStorage.getItem('token');
-            const response = await axios.get(`http://3.35.87.118:5557/map/file/${mapId}`, {
+            const response = await axios.get(`http://13.209.28.158:5557/map/file/${mapId}`, {
                 headers: { Authorization: `Bearer ${token}` },
                 responseType: 'blob',
             });

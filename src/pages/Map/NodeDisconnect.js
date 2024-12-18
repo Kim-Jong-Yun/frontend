@@ -12,7 +12,7 @@ function NodeDisconnect({ firstNodeId, secondNodeId, onDisconnectSuccess }) {
         }
 
         try {
-          await axios.delete(`http://3.35.87.118:5557/map/${firstNodeId}/connections/${secondNodeId}`, {
+          await axios.delete(`http://13.209.28.158:5557/map/${firstNodeId}/connections/${secondNodeId}`, {
             headers: { Authorization: `Bearer ${token}` },
           });
        

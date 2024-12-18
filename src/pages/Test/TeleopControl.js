@@ -69,7 +69,7 @@ function TeleopControl({ robotName, onClose }) {
   // rosbridge 서버 시작 함수
   const startRosbridgeServer = async () => {
     try {
-      await axios.post('http://3.35.87.118:5559/robot/rosbridge/start');
+      await axios.post('http://13.209.28.158:5559/robot/rosbridge/start');
       alert('rosbridge 서버가 성공적으로 시작되었습니다.');
     } catch (error) {
       console.error('rosbridge 서버 시작 오류:', error);

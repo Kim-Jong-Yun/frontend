@@ -5,7 +5,7 @@ const SlamStream = () => {
     const videoRef = useRef();
 
     useEffect(() => {
-        const socket = io('http://3.35.87.118:7002');
+        const socket = io('http://13.209.28.158:7002');
 
         socket.on('video', (data) => {
             if (videoRef.current) {

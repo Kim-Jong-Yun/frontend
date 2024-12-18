@@ -5,7 +5,7 @@ const WebcamStream = () => {
     const videoRef = useRef(null);
 
     useEffect(() => {
-        const socket = io('http://3.35.87.118:7001');
+        const socket = io('http://13.209.28.158:7001');
 
         socket.on('video', (data) => {
             if (videoRef.current) {
