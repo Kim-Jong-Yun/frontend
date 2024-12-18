@@ -7,7 +7,7 @@ function UserInfo() {
         const fetchUserInfo = async () => {
             const token = localStorage.getItem('token');
             if (token) {
-                const response = await fetch('http://localhost:5555/account/userinfo', {
+                const response = await fetch('http://http://3.35.87.118/:5555/account/userinfo', {
                     headers: {
                         'Authorization': `Bearer ${token}`
                     }
