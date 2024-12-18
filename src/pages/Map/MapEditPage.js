@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Navbar from '../../components/Common/Navbar';
 import LogoutButton from '../../components/Common/LogoutButton';
 import UserInfo from '../../components/Common/UserInfo';
+import Logo from '../../components/Common/Logo';
 import axios from 'axios';
 
 function MapEditPage() {
@@ -137,6 +138,7 @@ function MapEditPage() {
     <div style={{ fontFamily: 'Arial, sans-serif', margin: '20px' }}>
       <header style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '20px' }}>
         <UserInfo />
+        <Logo/>
         <LogoutButton />
       </header>
       <div style={{ display: 'flex' }}>

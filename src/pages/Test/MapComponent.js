@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import axios from 'axios';
+import './MapComponent.css'; // 수정된 CSS 파일 임포트
 
 function MapComponent({ robots, mapUrl, mapId }) {
   const canvasRef = useRef(null);
@@ -9,6 +10,12 @@ function MapComponent({ robots, mapUrl, mapId }) {
   const [nodes, setNodes] = useState([]);
   const [noGoZones, setNoGoZones] = useState([]);
   const [hoveredNode, setHoveredNode] = useState(null);
+
+  // Visibility state variables
+  const [showAMRs, setShowAMRs] = useState(true);
+  const [showNodes, setShowNodes] = useState(true);
+  const [showConnections, setShowConnections] = useState(true);
+  const [showNoGoZones, setShowNoGoZones] = useState(true);
 
   const mapResolution = 0.05;
   const mapOrigin = [-10.0, -10.0];
@@ -98,50 +105,58 @@ function MapComponent({ robots, mapUrl, mapId }) {
     ctx.drawImage(mapImageRef.current, 0, 0, canvas.width, canvas.height);
 
     // 금지 구역 그리기
-    noGoZones.forEach((zone) => {
-      const topLeft = worldToMap(zone.topLeft.x, zone.topLeft.y);
-      const bottomRight = worldToMap(zone.bottomRight.x, zone.bottomRight.y);
-      const width = bottomRight.mapX - topLeft.mapX;
-      const height = bottomRight.mapY - topLeft.mapY;
+    if (showNoGoZones) {
+      noGoZones.forEach((zone) => {
+        const topLeft = worldToMap(zone.topLeft.x, zone.topLeft.y);
+        const bottomRight = worldToMap(zone.bottomRight.x, zone.bottomRight.y);
+        const width = bottomRight.mapX - topLeft.mapX;
+        const height = bottomRight.mapY - topLeft.mapY;
 
-      ctx.fillStyle = 'rgba(255, 0, 0, 0.3)';
-      ctx.fillRect(topLeft.mapX, topLeft.mapY, width, height);
-      ctx.strokeStyle = 'red';
-      ctx.lineWidth = 2;
-      ctx.strokeRect(topLeft.mapX, topLeft.mapY, width, height);
-    });
+        ctx.fillStyle = 'rgba(255, 0, 0, 0.3)';
+        ctx.fillRect(topLeft.mapX, topLeft.mapY, width, height);
+        ctx.strokeStyle = 'red';
+        ctx.lineWidth = 2;
+        ctx.strokeRect(topLeft.mapX, topLeft.mapY, width, height);
+      });
+    }
 
     // 노드 간 연결선 그리기 (웨이포인트 포함)
-    nodes.forEach((node) => {
-      node.connections.forEach((connection) => {
-        const connectedNode = nodes.find((n) => n._id === connection.node);
-        if (connectedNode) {
-          ctx.strokeStyle = 'blue';
-          ctx.lineWidth = 2;
-          ctx.beginPath();
+    if (showConnections) {
+      nodes.forEach((node) => {
+        node.connections.forEach((connection) => {
+          const connectedNode = nodes.find((n) => n._id === connection.node);
+          if (connectedNode) {
+            ctx.strokeStyle = 'blue';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
 
-          const { mapX: startX, mapY: startY } = worldToMap(node.x, node.y);
-          ctx.moveTo(startX, startY);
+            const { mapX: startX, mapY: startY } = worldToMap(node.x, node.y);
+            ctx.moveTo(startX, startY);
 
-          // 각 웨이포인트를 연결하며 그리기
-          if (connection.waypoints && connection.waypoints.length > 0) {
-            connection.waypoints.forEach((waypoint) => {
-              const { mapX, mapY } = worldToMap(waypoint.x, waypoint.y);
-              ctx.lineTo(mapX, mapY);
-            });
+            // 각 웨이포인트를 연결하며 그리기
+            if (connection.waypoints && connection.waypoints.length > 0) {
+              connection.waypoints.forEach((waypoint) => {
+                const { mapX, mapY } = worldToMap(waypoint.x, waypoint.y);
+                ctx.lineTo(mapX, mapY);
+              });
+            }
+
+            // 마지막에 연결된 노드까지 연결
+            const { mapX: endX, mapY: endY } = worldToMap(connectedNode.x, connectedNode.y);
+            ctx.lineTo(endX, endY);
+            ctx.stroke();
           }
-
-          // 마지막에 연결된 노드까지 연결
-          const { mapX: endX, mapY: endY } = worldToMap(connectedNode.x, connectedNode.y);
-          ctx.lineTo(endX, endY);
-          ctx.stroke();
-        }
+        });
       });
-    });
+    }
 
     // 노드와 로봇 그리기
-    drawNodes();
-    drawRobots();
+    if (showNodes) {
+      drawNodes();
+    }
+    if (showAMRs) {
+      drawRobots();
+    }
   };
 
   // 노드 그리기 함수
@@ -252,13 +267,15 @@ function MapComponent({ robots, mapUrl, mapId }) {
       fetchNodes();
       fetchNoGoZones();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [mapUrl, mapId]);
 
   useEffect(() => {
     if (mapImageRef.current) {
       drawMapElements();
     }
-  }, [robots, nodes, noGoZones, hoveredNode]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [robots, nodes, noGoZones, hoveredNode, showAMRs, showNodes, showConnections, showNoGoZones]);
 
   // 마우스 이벤트 리스너 추가
   useEffect(() => {
@@ -278,6 +295,42 @@ function MapComponent({ robots, mapUrl, mapId }) {
       ) : (
         <p>지도를 불러오는 중...</p>
       )}
+      {/* 플로팅 컨트롤 패널 */}
+      <div className="control-panel">
+        <h4>지도 레이어</h4>
+        <label>
+          <input
+            type="checkbox"
+            checked={showAMRs}
+            onChange={(e) => setShowAMRs(e.target.checked)}
+          />
+          AMRs
+        </label>
+        <label>
+          <input
+            type="checkbox"
+            checked={showNodes}
+            onChange={(e) => setShowNodes(e.target.checked)}
+          />
+          노드
+        </label>
+        <label>
+          <input
+            type="checkbox"
+            checked={showConnections}
+            onChange={(e) => setShowConnections(e.target.checked)}
+          />
+          연결선
+        </label>
+        <label>
+          <input
+            type="checkbox"
+            checked={showNoGoZones}
+            onChange={(e) => setShowNoGoZones(e.target.checked)}
+          />
+          금지구역
+        </label>
+      </div>
     </div>
   );
 }

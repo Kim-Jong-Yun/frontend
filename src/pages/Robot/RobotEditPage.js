@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import Navbar from '../../components/Common/Navbar';
 import LogoutButton from '../../components/Common/LogoutButton';
 import UserInfo from '../../components/Common/UserInfo';
+import Logo from '../../components/Common/Logo';
 import axios from 'axios';
 import './RobotEditPage.css';
 import RobotRegisterPage from './RobotRegisterPage';
@@ -338,10 +339,15 @@ function RobotEditPage() {
 
   return (
     <div className="robot-edit-page">
-      <header className="header">
-        <UserInfo />
-        <LogoutButton />
-      </header>
+    <header className="map-management-header">
+        <div className="left-section">
+            <Logo />
+        </div>
+        <div className="right-section">
+            <UserInfo />
+            <LogoutButton />
+        </div>
+    </header>
       <Navbar />
       <div className="main-content">
         <div className="robot-list-container">

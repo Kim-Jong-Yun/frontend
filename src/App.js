@@ -13,6 +13,7 @@ import Mapmanage from './pages/Map/Mapmanage';
 import RobotManagePage from './pages/Robot/RobotManagePage';
 import TestPage from './pages/Test/TestPage';
 import TaskPage from './pages/Task/TaskPage';
+import LogPage from './pages/Log/LogPage';
 
 function App() {
     return (
@@ -31,6 +32,7 @@ function App() {
                 <Route path="/robot_manage" element={<RobotManagePage />} />
                 <Route path="/testpage" element={<TestPage />} />
                 <Route path="/taskpage" element={<TaskPage />} />
+                <Route path="/LogPage" element={<LogPage />} />
                 <Route path="/" element={<LoginPage />} /> {/* 기본 경로는 로그인 페이지로 설정 */}
             </Routes>
         </Router>

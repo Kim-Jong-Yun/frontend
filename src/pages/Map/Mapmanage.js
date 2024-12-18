@@ -8,6 +8,7 @@ import { faEdit, faPlus, faLink, faUnlink } from '@fortawesome/free-solid-svg-ic
 import Navbar from '../../components/Common/Navbar';
 import LogoutButton from '../../components/Common/LogoutButton';
 import UserInfo from '../../components/Common/UserInfo';
+import Logo from '../../components/Common/Logo';
 import './Mapmanage.css';
 import { worldToMap, mapToWorld } from '../../utils/coordinateUtils';
 import NodeList from './NodeList';
@@ -1059,9 +1060,14 @@ function Mapmanage() {
     <div className="map-management-page">
       {/* 상단 네비게이션 바 */}
       <header className="map-management-header">
-        <UserInfo />
-        <LogoutButton />
-      </header>
+        <div className="left-section">
+            <Logo />
+        </div>
+        <div className="right-section">
+            <UserInfo />
+            <LogoutButton />
+        </div>
+    </header>
       <Navbar />
 
       {/* 툴바: 네비게이션 아래에 위치 */}

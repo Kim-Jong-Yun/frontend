@@ -20,8 +20,8 @@ function Navbar() {
                 <li className={location.pathname === '/map_manage' ? 'selected' : ''}>
                     <Link to="/map_manage">맵 관리</Link>
                 </li>
-                <li className={location.pathname === '/robot_manage' ? 'selected' : ''}>
-                    <Link to="/robot_manage"></Link>
+                <li className={location.pathname === '/LogPage' ? 'selected' : ''}>
+                    <Link to="/LogPage">로그 관리</Link>
                 </li>
             </ul>
         </nav>
